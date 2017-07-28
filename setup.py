@@ -216,7 +216,7 @@ if 'setuptools' in sys.modules:
         "nbconvert.exporters" : [
             'custom=nbconvert.exporters:TemplateExporter',
             'html=nbconvert.exporters:HTMLExporter',
-            'htmlembedded=nbconvert.exporters:HTMLEmbeddedExporter'
+            'htmlembedded=nbconvert.exporters:HTMLEmbeddedExporter',
             'slides=nbconvert.exporters:SlidesExporter',
             'latex=nbconvert.exporters:LatexExporter',
             'pdf=nbconvert.exporters:PDFExporter',
