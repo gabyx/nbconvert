@@ -11,8 +11,7 @@ from .base import (export, get_exporter,
 from .exporter import Exporter
 from .templateexporter import TemplateExporter
 from .html import HTMLExporter
-import nbconvertHTMLEmbeddedExporter
-from nbconvertHTMLEmbeddedExporter.exporter import HTMLEmbeddedExporter
+from .htmlembedded import HTMLEmbeddedExporter
 from .slides import SlidesExporter
 from .latex import LatexExporter
 from .pdf import PDFExporter

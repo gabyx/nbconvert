@@ -1,7 +1,8 @@
-from .base import (export, get_exporter, 
+from .base import (export, get_exporter,
                    ExporterNameError, get_export_names)
 from .exporter_locator import export_by_name
 from .html import HTMLExporter
+from .htmlembedded import HTMLEmbeddedExporter
 from .slides import SlidesExporter
 from .templateexporter import TemplateExporter
 from .latex import LatexExporter
