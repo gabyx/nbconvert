@@ -5,12 +5,13 @@
 
 import warnings
 
-from .base import (export, get_exporter, 
+from .base import (export, get_exporter,
                    get_export_names , ExporterNameError)
 
 from .exporter import Exporter
 from .templateexporter import TemplateExporter
 from .html import HTMLExporter
+from .htmlembedded import HTMLEmbeddedExporter
 from .slides import SlidesExporter
 from .latex import LatexExporter
 from .pdf import PDFExporter
@@ -39,6 +40,7 @@ __all__ = [
 exporter_map = dict(
     custom=TemplateExporter,
     html=HTMLExporter,
+    htmlembedded=HTMLEmbeddedExporter,
     slides=SlidesExporter,
     latex=LatexExporter,
     pdf=PDFExporter,
@@ -55,7 +57,7 @@ def _make_exporter(name, E):
         return export(E, nb, **kw)
     _export.__doc__ = """DEPRECATED: Export a notebook object to {0} format""".format(name)
     return _export
-    
+
 g = globals()
 
 # These specific functions are deprecated as of 5.0
@@ -66,22 +68,22 @@ for name, E in exporter_map.items():
 
 def export_by_name(format_name, nb, **kw):
     """
-    Deprecated since version 5.0. 
+    Deprecated since version 5.0.
 
     Export a notebook object to a template type by its name.  Reflection
     (Inspect) is used to find the template's corresponding explicit export
     method defined in this module.  That method is then called directly.
-    
+
     Parameters
     ----------
     format_name : str
         Name of the template style to export to.
     """
-    
+
     warnings.warn("export_by_name is deprecated since nbconvert 5.0. Instead, use export(get_exporter(format_name), nb, **kw)).", DeprecationWarning, stacklevel=2)
 
     try:
-        Exporter = get_exporter(format_name) 
+        Exporter = get_exporter(format_name)
         return export(Exporter, nb, **kw)
     except ValueError:
         raise ExporterNameError("Exporter for `%s` not found" % format_name)
